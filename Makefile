@@ -38,7 +38,7 @@ container.build: ## The container to build, where ${VERSION} is the version to b
 	docker build \
 	    --no-cache \
 	    --build-arg="PHP_VERSION="$${VERSION} \
-	    --tag="quay.io/littlemanco/apache-php:$${VERSION}-latest" \
+	    --tag="quay.io/sitewards/apache-php:$${VERSION}-latest" \
 	    .
 
 .PHONY: container.test
@@ -50,7 +50,7 @@ container.test: ## ${VERSION} | Ensure the container boots and runs successfully
 	    --publish 80:80 \
 	    --publish 443:443 \
 	    --detach \
-	    quay.io/littlemanco/apache-php:$${VERSION}-latest
+	    quay.io/sitewards/apache-php:$${VERSION}-latest
 	# Wait for the container to boot
 	sleep 3
 	# Verify the container works
@@ -62,4 +62,4 @@ container.test: ## ${VERSION} | Ensure the container boots and runs successfully
 
 .PHONY: container.push
 container.push:  ## Builds and pushes the container
-	docker push quay.io/littlemanco/apache-php:$${VERSION}-latest
+	docker push quay.io/sitewards/apache-php:$${VERSION}-latest
