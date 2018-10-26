@@ -68,8 +68,9 @@ variables:
 - SERVER_TLS_CERTIFICATE_PATH
 - SERVER_TLS_CERTIFICATE_KEY_PATH
 
-## Known Limitations
+## Known Limitations 
 
 - HTTP/2 doesn't work. This is because [the pre-fork DSO does not work well with the HTTP/2 module](https://github.com/icing/mod_h2/issues/142).
   To resolve this we'd need to compile PHP in a thread safe way, which is not easily possible due to library dependencies
   that are also not thread safe (MySQL)
+- The logging is in JSON, and is a bit hard to read.
